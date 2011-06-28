@@ -14,7 +14,7 @@ $VERSION = "1.0";
           url         => 'http://www.freebsd.org.mx'
          );
 
-sub coffee {
+sub chela {
   my ($server, $msg, $nick, $address, $target) = @_;
   my $instructions = " Aunque para muchos esto suene a chiste, el tomar cerveza con moderación tiene sus beneficios para el organismo. Tomar cerveza reduce 
 el riesgo de infarto y otras enfermedades cardiovasculares. Reduce el estreñimiento, por su contenido de fibra. Dicen que retrasa la 
@@ -25,7 +25,7 @@ producción de Leche materna.
 Tiene vitaminas como B1, B2 y B12, que facilitan la digestión, retrasa el envejecimiento celular, contiene Potasio que ayuda en la 
 potencia muscular.
 ";
-  if ( $msg =~ /chela/i ) {
+  if ( $msg =~ /!chela/i ) {
     $server->command('msg '.$target.' '.$nick.': '.$instructions); 
   }
   else {
@@ -33,4 +33,4 @@ potencia muscular.
   }
 }
 
-Irssi::signal_add("message public", "coffee");
+Irssi::signal_add("message public", "chela");
