@@ -2,12 +2,11 @@
 #
 
 use HTML::TableContentParser;
+use LWP::Simple;
 use strict;
 
-my $html = '';
 my $link = "http://www.linux-mx.org/ensartadas/list/";
 my %list = ();
-
 
 sub listar {
   my $list_ref = shift;
@@ -79,13 +78,8 @@ sub ensartometro {
   return (\%ensartados, \%ensartadores);
 }
 
+my $html = get $link || die "$link Fail!";
 my $parsetable = HTML::TableContentParser->new();
-open(FILE, "/home/tonyskapunk/ensartadas.html") or die $!;
-while (<FILE>) {
-  $html .= $_;
-}
-close(FILE);
-
 my $tables = $parsetable->parse($html);
 # [0] Menu [1] Sesion [2] Lista [3] Empty [4] Calendario [5] Contador [6] Null
 my $ensartes = ${@$tables}[2];
@@ -108,7 +102,7 @@ my @ensartadas = listar(\%ensartadas);
 
 #top5_ensarte \%ensartados;
 #bot5_ensarte \%ensartados;
-top5_ensarte \%ensartadas;
+#top5_ensarte \%ensartadas;
 #bot5_ensarte \%ensartadas;
 
 
