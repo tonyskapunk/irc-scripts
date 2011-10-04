@@ -161,7 +161,7 @@ sub ensartadas_por{
       push @lista_de_ensartadas, $id;
     }
   }
-  return sort @lista_de_ensartadas;
+  return sort {$a <=> $b} @lista_de_ensartadas;
 }
 
 sub ensartados_de {
@@ -178,12 +178,12 @@ sub ensartados_de {
   my @lista_de_ensartados = ();
   my %list = %{$self->{LIST}};
   foreach my $id (keys %list) {
-    printf "%s: [%s] por (%s) |%s\n", $id, $list{$id}[0], $list{$id}[1], $list{$id}[2];
+    #printf "%s: [%s] por (%s) |%s\n", $id, $list{$id}[0], $list{$id}[1], $list{$id}[2];
     if ( lc $list{$id}[0] eq lc $nickname  ) {
       push @lista_de_ensartados, $id;
     }
   }
-  return sort @lista_de_ensartados;
+  return sort {$a <=> $b} @lista_de_ensartados;
 }
 
 1;
